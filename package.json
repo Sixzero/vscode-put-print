@@ -2,7 +2,7 @@
   "name": "putprint",
   "displayName": "Print Debug (aka Put Print)",
   "description": "Quickly put print statements to help you print debug your code. Works on any languages by adding your own print statements",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "ryu1kn",
   "license": "SEE LICENSE IN LICENSE.txt",
   "icon": "images/put-print_360x360.png",
@@ -29,6 +29,7 @@
   ],
   "activationEvents": [
     "onCommand:putprint.putPrintStatement",
+    "onCommand:putprint.putPrintStatement2",
     "onCommand:putprint.resetCounter",
     "onCommand:putprint.selectExpression"
   ],
@@ -103,6 +104,11 @@
           "default": "# {{selectedExpression}}",
           "description": "Will be used when there is no language specific template found"
         },
+        "putprint.printStatement2.default.template": {
+          "type": "string",
+          "default": "# {{selectedExpression}}",
+          "description": "Will be used when there is no language specific template found"
+        },
         "putprint.printStatement.default.templateForNoExpression": {
           "type": "string",
           "default": "# >>>>> {{count}}",
@@ -117,6 +123,11 @@
         "when": "editorTextFocus"
       },
       {
+        "command": "putprint.putPrintStatement2",
+        "key": "ctrl+r p",
+        "when": "editorTextFocus"
+      },
+      {
         "command": "putprint.selectExpression",
         "key": "ctrl+r s",
         "when": "editorTextFocus"
@@ -126,6 +137,11 @@
       {
         "command": "putprint.putPrintStatement",
         "title": "Put Print Statement",
+        "category": "PrintDebug"
+      },
+      {
+        "command": "putprint.putPrintStatement2",
+        "title": "Put Print Statement 2",
         "category": "PrintDebug"
       },
       {

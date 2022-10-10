@@ -28,6 +28,19 @@ export default class App {
             this.handleError(e);
         });
     }
+    putPrintStatement2(editor: vscode.TextEditor) {
+        return Promise.resolve().then(() => {
+            const selectedExpression = this.textBuffer.read();
+            const languageId = editor.document.languageId;
+            const source = this.printStatementSourceBuilder.build(languageId, selectedExpression, "2");
+            const printStatement = this.printStatementGenerator.generate(source);
+            return editor.edit(editBuilder => {
+                editBuilder.replace(editor.selection, printStatement);
+            });
+        }).catch(e => {
+            this.handleError(e);
+        });
+    }
 
     selectExpression(editor: vscode.TextEditor) {
         try {

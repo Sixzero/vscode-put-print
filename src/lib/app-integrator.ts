@@ -16,6 +16,7 @@ export default class AppIntegrator {
         const app = this.app;
         const commandMap = new Map([
             [`${EXTENSION_NAMESPACE}.putPrintStatement`, app.putPrintStatement.bind(app)],
+            [`${EXTENSION_NAMESPACE}.putPrintStatement2`, app.putPrintStatement2.bind(app)],
             [`${EXTENSION_NAMESPACE}.selectExpression`, app.selectExpression.bind(app)]
         ]);
         commandMap.forEach((command, commandName) => {

@@ -21,9 +21,9 @@ export default class PrintStatementSourceBuilder {
         this.extensionConfig = workspace.getConfiguration('putprint');
     }
 
-    build(languageId: string, selectedExpression?: string): PrintStatementSource {
-        const langConfig = this.extensionConfig.get(`printStatement.${languageId}`) as LanguageConfig;
-        const defaultConfig = this.extensionConfig.get('printStatement.default') as LanguageConfig;
+    build(languageId: string, selectedExpression?: string, postname: string=""): PrintStatementSource {
+        const langConfig = this.extensionConfig.get(`printStatement${postname}.${languageId}`) as LanguageConfig;
+        const defaultConfig = this.extensionConfig.get(`printStatement${postname}.default`) as LanguageConfig;
         const templateName = selectedExpression ? 'template' : 'templateForNoExpression';
         const config = this.isValidConfig(langConfig, templateName) ? langConfig : defaultConfig;
         return {
